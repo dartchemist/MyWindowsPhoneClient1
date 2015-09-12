@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WindowsPhoneClient.UI.Resources;
+using WindowsPhoneClient.UI.ViewModels;
 
 namespace WindowsPhoneClient.UI
 {
@@ -17,7 +18,7 @@ namespace WindowsPhoneClient.UI
         public MainPage()
         {
             InitializeComponent();
-
+            DataContext = App.Current.Resources["HomePageViewModel"];
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
@@ -37,5 +38,11 @@ namespace WindowsPhoneClient.UI
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+
+        private void HomePageLoaded(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as HomePageViewModel;
+            viewModel.GetPartnersInformation();
+        }
     }
 }

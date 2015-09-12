@@ -9,6 +9,7 @@ using Microsoft.Phone.Shell;
 using Microsoft.Practices.Unity;
 using WindowsPhoneClient.UI.Infrastrucure.Unity;
 using WindowsPhoneClient.UI.Resources;
+using WindowsPhoneClient.UI.ViewModels;
 
 namespace WindowsPhoneClient.UI
 {
@@ -65,6 +66,8 @@ namespace WindowsPhoneClient.UI
         {
             var unityContainer = new UnityContainer();
             UnityContainerBootstrapper.RegisterTypes(unityContainer);
+            var homePageViewModel = unityContainer.Resolve<HomePageViewModel>();
+            Resources.Add("HomePageViewModel", homePageViewModel);
         }
 
         // Code to execute when the application is activated (brought to foreground)

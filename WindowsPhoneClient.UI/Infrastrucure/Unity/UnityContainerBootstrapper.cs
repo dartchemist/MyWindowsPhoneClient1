@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
+using WindowsPhoneClient.ServiceConsumer;
 
 namespace WindowsPhoneClient.UI.Infrastrucure.Unity
 {
@@ -11,7 +12,7 @@ namespace WindowsPhoneClient.UI.Infrastrucure.Unity
     {
         public static void RegisterTypes(IUnityContainer container)
         {
-
+            container.RegisterType<IGetPartnersInformationService, GetPartnersInformationService>();
         }
     }
 }
