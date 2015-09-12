@@ -6,6 +6,8 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Practices.Unity;
+using WindowsPhoneClient.UI.Infrastrucure.Unity;
 using WindowsPhoneClient.UI.Resources;
 
 namespace WindowsPhoneClient.UI
@@ -61,6 +63,8 @@ namespace WindowsPhoneClient.UI
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            var unityContainer = new UnityContainer();
+            UnityContainerBootstrapper.RegisterTypes(unityContainer);
         }
 
         // Code to execute when the application is activated (brought to foreground)
