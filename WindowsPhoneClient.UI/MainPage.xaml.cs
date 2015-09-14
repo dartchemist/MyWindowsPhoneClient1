@@ -42,7 +42,7 @@ namespace WindowsPhoneClient.UI
         private void HomePageLoaded(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as HomePageViewModel;
-            viewModel.GetPartnersInformation();
+            viewModel.LoadPartnersInformation();
         }
     }
 }

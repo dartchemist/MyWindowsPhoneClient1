@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
+    <value>bg-BG</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="HomePageAroundMe" xml:space="preserve">
-    <value>AroundMe</value>
+    <value>Около мен</value>
   </data>
   <data name="HomePageComingSoon" xml:space="preserve">
-    <value>Coming Soon</value>
+    <value>Очаквайте скоро</value>
   </data>
   <data name="HomePageFindAroundYou" xml:space="preserve">
-    <value>Find Around You</value>
+    <value>Намерете около Вас</value>
   </data>
 </root>

@@ -8,6 +8,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:WindowsPhoneClient.UI" x:Key="LocalizedStrings"/>
+        <SolidColorBrush Color="#76127170"  x:Key="SinilinkBlue"/>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

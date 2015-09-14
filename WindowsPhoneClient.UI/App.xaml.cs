@@ -7,8 +7,10 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Practices.Unity;
+using WindowsPhoneClient.UI.Infrastrucure.AutoMapper;
 using WindowsPhoneClient.UI.Infrastrucure.Unity;
 using WindowsPhoneClient.UI.Resources;
+using WindowsPhoneClient.UI.UIUtils;
 using WindowsPhoneClient.UI.ViewModels;
 
 namespace WindowsPhoneClient.UI
@@ -57,17 +59,21 @@ namespace WindowsPhoneClient.UI
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            ThemeManager.ToLightTheme();
             var unityContainer = new UnityContainer();
             UnityContainerBootstrapper.RegisterTypes(unityContainer);
+            AutoMapperConfigurator.ConfigureAutoMapper();
             var homePageViewModel = unityContainer.Resolve<HomePageViewModel>();
             Resources.Add("HomePageViewModel", homePageViewModel);
+
+            var screenWidth = UIHelperMethods.GetScreenWidth();
+            Resources.Add("ScreenWidth", screenWidth);
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -208,8 +214,8 @@ namespace WindowsPhoneClient.UI
                 //
                 // If a compiler error is hit then ResourceFlowDirection is missing from
                 // the resource file.
-                FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
-                RootFrame.FlowDirection = flow;
+                //FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection);
+                //RootFrame.FlowDirection = flow;
             }
             catch
             {
