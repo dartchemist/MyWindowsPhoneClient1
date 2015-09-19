@@ -130,4 +130,10 @@
   <data name="HomePageFindAroundYou" xml:space="preserve">
     <value>Намерете около Вас</value>
   </data>
+  <data name="CannotLoadPartnersInformationMessage" xml:space="preserve">
+    <value>Информацията за партньорите не може да бъде заредена</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
 </root>

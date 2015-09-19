@@ -102,6 +102,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\PartnerModel.cs" />
+    <Compile Include="ViewServices\IMessageService.cs" />
+    <Compile Include="ViewServices\MessageService.cs" />
     <Page Include="ResourceDictionaries\HomePageResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -45,7 +45,7 @@ namespace WindowsPhoneClient.ServiceConsumer
             partner.BranchKey = (int)item["fields"]["branch_key"];
             partner.VideoUrl = (string)item["fields"]["video"];
             partner.LogoRelativePath = (string)item["fields"]["logo"];
-            partner.Logo = DownloadLogoImage(ServiceAddresses.DomainMediaUrl + "/" + partner.LogoRelativePath).Result;
+            //partner.Logo = DownloadLogoImage(ServiceAddresses.DomainMediaUrl + "/" + partner.LogoRelativePath).Result;
             partner.MarkerImage = (string)item["fields"]["marker_image"];
             var thumbnails = new[]
                 {

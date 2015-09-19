@@ -61,6 +61,24 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot load partners information.
+        /// </summary>
+        public static string CannotLoadPartnersInformation {
+            get {
+                return ResourceManager.GetString("CannotLoadPartnersInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AroundMe.
         /// </summary>
         public static string HomePageAroundMe {

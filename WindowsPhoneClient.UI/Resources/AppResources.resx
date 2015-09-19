@@ -130,4 +130,10 @@
   <data name="HomePageFindAroundYou" xml:space="preserve">
     <value>Find Around You</value>
   </data>
+  <data name="CannotLoadPartnersInformation" xml:space="preserve">
+    <value>Cannot load partners information</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>

@@ -7,11 +7,15 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Practices.Unity;
+using Windows.Devices.Geolocation;
+using Windows.System;
 using WindowsPhoneClient.UI.Infrastrucure.AutoMapper;
 using WindowsPhoneClient.UI.Infrastrucure.Unity;
 using WindowsPhoneClient.UI.Resources;
 using WindowsPhoneClient.UI.UIUtils;
 using WindowsPhoneClient.UI.ViewModels;
+using WindowsPhoneClient.CommonConstants;
+using System.Threading;
 
 namespace WindowsPhoneClient.UI
 {
@@ -22,6 +26,7 @@ namespace WindowsPhoneClient.UI
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+        //private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
 
         /// <summary>
         /// Constructor for the Application object.
@@ -65,6 +70,7 @@ namespace WindowsPhoneClient.UI
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             ThemeManager.ToLightTheme();
+            
             var unityContainer = new UnityContainer();
             UnityContainerBootstrapper.RegisterTypes(unityContainer);
             AutoMapperConfigurator.ConfigureAutoMapper();
@@ -113,6 +119,20 @@ namespace WindowsPhoneClient.UI
             }
         }
 
+        #region Requirements Check
+        
+        private static bool IsLocationDisabled()
+        {
+            var geolocator = new Geolocator();
+            if (geolocator.LocationStatus == PositionStatus.Disabled)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
+
         #region Phone application initialization
 
         // Avoid double-initialization
@@ -140,13 +160,22 @@ namespace WindowsPhoneClient.UI
         }
 
         // Do not add any additional code to this method
-        private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
+        private async void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
         {
             // Set the root visual to allow the application to render
             if (RootVisual != RootFrame)
                 RootVisual = RootFrame;
 
             // Remove this handler since it is no longer needed
+            if (IsLocationDisabled())
+            {
+                //MessageBox.Show("Location settings will be launched", "Redirection", MessageBoxButton.OK);
+                //var launched = await Launcher.LaunchUriAsync(WindowsPhoneBuiltInAppsUris.LocationSettingsAppUri);
+                //if (launched)
+                //{
+                //    _resetEvent.WaitOne(1000);
+                //}
+            }
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
         }
 
