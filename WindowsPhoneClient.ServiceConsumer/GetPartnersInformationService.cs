@@ -8,6 +8,7 @@ using WindowsPhoneClient.ServiceConsumer.BusinessModels;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
+using WindowsPhoneClient.CommonConstants;
 
 namespace WindowsPhoneClient.ServiceConsumer
 {
@@ -43,7 +44,8 @@ namespace WindowsPhoneClient.ServiceConsumer
             partner.Name = (string)item["fields"]["name"];
             partner.BranchKey = (int)item["fields"]["branch_key"];
             partner.VideoUrl = (string)item["fields"]["video"];
-            partner.Logo = (string)item["fields"]["logo"];
+            partner.LogoRelativePath = (string)item["fields"]["logo"];
+            partner.Logo = DownloadLogoImage(ServiceAddresses.DomainMediaUrl + "/" + partner.LogoRelativePath).Result;
             partner.MarkerImage = (string)item["fields"]["marker_image"];
             var thumbnails = new[]
                 {
@@ -60,6 +62,15 @@ namespace WindowsPhoneClient.ServiceConsumer
                 };
             partner.AdvertismentImages = advertismentImages;
             return partner;
+        }
+
+        private async Task<byte[]> DownloadLogoImage(string imageUrl)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var logoBytes = await httpClient.GetByteArrayAsync(imageUrl);
+                return logoBytes;
+            }
         }
     }
 }

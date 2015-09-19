@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:templateSelectors="clr-namespace:WindowsPhoneClient.UI.DataTemplateSelectors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -15,26 +16,6 @@
     shell:SystemTray.IsVisible="True"
     Loaded="HomePageLoaded">
     
-    <phone:PhoneApplicationPage.Resources>
-        <DataTemplate x:Key="DefaultLogoDataTemplate">
-            <Border>
-                <TextBlock Text="" />
-            </Border>
-        </DataTemplate>
-        
-        <DataTemplate x:Key="PartnerDataTemplate">
-            <Border Width="150"
-                    Height="150"
-                    CornerRadius="12"
-                    BorderThickness="1"
-                    BorderBrush="{StaticResource SinilinkBlue}">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Mine"/>
-                </StackPanel>
-            </Border>
-        </DataTemplate>
-    </phone:PhoneApplicationPage.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -45,13 +26,23 @@
         <TextBlock  Text="SINILINK"
                     Grid.Row="0"
                     HorizontalAlignment="Center"
-                    FontSize="30"/>
+                    FontSize="30"
+                    Foreground="{StaticResource SinilinkBlue}"/>
         <TextBlock Text="{Binding LocalizedResources.HomePageFindAroundYou, Source={StaticResource LocalizedStrings}}"
                    Grid.Row="1"
-                   HorizontalAlignment="Center"/>
+                   HorizontalAlignment="Center"
+                   Margin="0, 40, 0, 0"
+                   Foreground="{StaticResource SinilinkBlue}"/>
         <ListBox Grid.Row="2"
                  ItemsSource="{Binding PartnersInformation}"
-                 ItemTemplate="{StaticResource PartnerDataTemplate}">
+                 Margin="0, 10, 0, 0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <templateSelectors:SponsorViewDataTemplateSelector Content="{Binding}"
+                                                                       DefaultLogoDataTemplateSelector="{StaticResource DefaultLogoDataTemplate}"
+                                                                       SponsorWithLogoDataTemplateSelector="{StaticResource SponsorWithLogoDataTemplate}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <toolkit:WrapPanel Orientation="Horizontal" />

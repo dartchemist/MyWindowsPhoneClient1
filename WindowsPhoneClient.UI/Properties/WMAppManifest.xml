@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="bg-BG" />
   </Languages>
-  <App xmlns="" ProductID="{2236bb17-9b89-4512-aaf7-86980b967252}" Title="Sinilink" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="WindowsPhoneClient.UI author" Description="Sample description" Publisher="WindowsPhoneClient.UI" PublisherID="{1e9f5fb3-4c82-4ab7-af2b-bbc3d52131c7}">
+  <App xmlns="" ProductID="{2236bb17-9b89-4512-aaf7-86980b967252}" Title="Sinilink" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Alex Enterprises Ltd." Description="Sample description" Publisher="Alex Enterprises Ltd." PublisherID="{1e9f5fb3-4c82-4ab7-af2b-bbc3d52131c7}">
     <IconPath IsRelative="true" IsResource="false">SinilinkLogo.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

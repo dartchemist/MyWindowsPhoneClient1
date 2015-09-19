@@ -16,11 +16,18 @@ namespace WindowsPhoneClient.UI.Models
             set { SetField<string>(ref _name, value); }
         }
 
-        private string _logo;
-        public string Logo
+        private string _logoRelativePath;
+        public string LogoRelativePath
+        {
+            get { return _logoRelativePath; }
+            set { SetField<string>(ref _logoRelativePath, value); }
+        }
+
+        private byte[] _logo;
+        public byte[] Logo
         {
             get { return _logo; }
-            set { SetField<string>(ref _logo, value); }
+            set { SetField<byte[]>(ref _logo, value); }
         }
 
         private string _markerImage;

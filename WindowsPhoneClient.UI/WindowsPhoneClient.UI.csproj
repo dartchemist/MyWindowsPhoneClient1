@@ -92,6 +92,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataTemplateSelectors\DataTemplateSelector.cs" />
+    <Compile Include="DataTemplateSelectors\SponsorViewDataTemplateSelector.cs" />
     <Compile Include="Infrastrucure\AutoMapper\AutoMapperConfigurator.cs" />
     <Compile Include="Infrastrucure\BindingBase.cs" />
     <Compile Include="Infrastrucure\Unity\UnityContainerBootstrapper.cs" />
@@ -100,6 +102,14 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\PartnerModel.cs" />
+    <Page Include="ResourceDictionaries\HomePageResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceDictionaries\ApplicationResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Include="UIUtils\UIHelperMethods.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -173,6 +183,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WindowsPhoneClient.CommonConstants\WindowsPhoneClient.CommonConstants.csproj">
+      <Project>{346C1B70-8B35-487D-B07F-14869C38109F}</Project>
+      <Name>WindowsPhoneClient.CommonConstants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WindowsPhoneClient.ServiceConsumer\WindowsPhoneClient.ServiceConsumer.csproj">
       <Project>{C232BE0E-ADC1-4424-B2B1-DD1245D3B6FE}</Project>
       <Name>WindowsPhoneClient.ServiceConsumer</Name>
