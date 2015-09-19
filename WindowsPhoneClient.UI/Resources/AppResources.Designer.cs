@@ -61,7 +61,7 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot load partners information.
+        ///   Looks up a localized string similar to Не воже да бъде показана информация за спонсорите.
         /// </summary>
         public static string CannotLoadPartnersInformation {
             get {
@@ -70,7 +70,7 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error.
+        ///   Looks up a localized string similar to Грешка.
         /// </summary>
         public static string ErrorTitle {
             get {
@@ -79,7 +79,7 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AroundMe.
+        ///   Looks up a localized string similar to Около мен.
         /// </summary>
         public static string HomePageAroundMe {
             get {
@@ -88,16 +88,7 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coming Soon.
-        /// </summary>
-        public static string HomePageComingSoon {
-            get {
-                return ResourceManager.GetString("HomePageComingSoon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Find Around You.
+        ///   Looks up a localized string similar to Намерете около Вас.
         /// </summary>
         public static string HomePageFindAroundYou {
             get {
@@ -106,7 +97,7 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to en-US.
+        ///   Looks up a localized string similar to bg-BG.
         /// </summary>
         public static string ResourceLanguage {
             get {

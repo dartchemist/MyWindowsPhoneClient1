@@ -160,7 +160,7 @@ namespace WindowsPhoneClient.UI
         }
 
         // Do not add any additional code to this method
-        private async void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
+        private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
         {
             // Set the root visual to allow the application to render
             if (RootVisual != RootFrame)

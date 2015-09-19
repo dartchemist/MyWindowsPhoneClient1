@@ -23,7 +23,7 @@ namespace WindowsPhoneClient.ServiceConsumer
                 var partnersJsonArray = JArray.Parse(partnersJsonInfo);
                 foreach (var partner in partnersJsonArray)
                 {
-                    var modelPartner = CreatePartnerFromJsonString(partner);
+                    var modelPartner = await CreatePartnerFromJsonString(partner);
                     if (modelPartner == null)
                         continue;
                     
@@ -33,7 +33,7 @@ namespace WindowsPhoneClient.ServiceConsumer
             return partnersInformation;
         }
 
-        private Partner CreatePartnerFromJsonString(JToken item)
+        private async Task<Partner> CreatePartnerFromJsonString(JToken item)
         {
             if ((string)item["model"] == "mobile_api.applicationparameters")
                 return null;
@@ -45,7 +45,7 @@ namespace WindowsPhoneClient.ServiceConsumer
             partner.BranchKey = (int)item["fields"]["branch_key"];
             partner.VideoUrl = (string)item["fields"]["video"];
             partner.LogoRelativePath = (string)item["fields"]["logo"];
-            //partner.Logo = DownloadLogoImage(ServiceAddresses.DomainMediaUrl + "/" + partner.LogoRelativePath).Result;
+            partner.Logo = await DownloadLogoImage(ServiceAddresses.DomainMediaUrl + "/" + partner.LogoRelativePath);
             partner.MarkerImage = (string)item["fields"]["marker_image"];
             var thumbnails = new[]
                 {
@@ -68,8 +68,7 @@ namespace WindowsPhoneClient.ServiceConsumer
         {
             using (var httpClient = new HttpClient())
             {
-                var logoBytes = await httpClient.GetByteArrayAsync(imageUrl);
-                return logoBytes;
+                return await httpClient.GetByteArrayAsync(imageUrl);
             }
         }
     }

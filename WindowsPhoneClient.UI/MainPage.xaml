@@ -12,7 +12,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
     Loaded="HomePageLoaded">
     
@@ -21,18 +21,22 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
-        <TextBlock  Text="SINILINK"
-                    Grid.Row="0"
-                    HorizontalAlignment="Center"
-                    FontSize="30"
-                    Foreground="{StaticResource SinilinkBlue}"/>
+        <Button Content="SINILINK"
+                Template="{StaticResource SinilinkButtonControlTemplate}"
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                FontSize="30"
+                Foreground="{StaticResource SinilinkBlue}"
+                FontWeight="Bold"/>
         <TextBlock Text="{Binding LocalizedResources.HomePageFindAroundYou, Source={StaticResource LocalizedStrings}}"
                    Grid.Row="1"
                    HorizontalAlignment="Center"
                    Margin="0, 40, 0, 0"
-                   Foreground="{StaticResource SinilinkBlue}"/>
+                   Foreground="{StaticResource SinilinkBlue}"
+                   FontSize="26"/>
         <ListBox Grid.Row="2"
                  ItemsSource="{Binding PartnersInformation}"
                  Margin="0, 10, 0, 0">
@@ -49,6 +53,13 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
+        
+        <Button Grid.Row="3"
+                Template="{StaticResource SinilinkButtonControlTemplate}" 
+                Content="{Binding LocalizedResources.HomePageAroundMe, Source={StaticResource LocalizedStrings}}"
+                HorizontalAlignment="Center"
+                Foreground="{StaticResource SinilinkBlue}"
+                Margin="0, 50, 0, 0"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
