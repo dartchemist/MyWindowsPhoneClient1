@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:templateSelectors="clr-namespace:WindowsPhoneClient.UI.DataTemplateSelectors"
+    xmlns:userControls="clr-namespace:WindowsPhoneClient.UI.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -23,14 +24,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
-        <Button Content="SINILINK"
-                Template="{StaticResource SinilinkButtonControlTemplate}"
-                Grid.Row="0"
-                HorizontalAlignment="Center"
-                FontSize="30"
-                Foreground="{StaticResource SinilinkBlue}"
-                FontWeight="Bold"/>
+
+        <userControls:SinilinkHeader Grid.Row="0"/>
         <TextBlock Text="{Binding LocalizedResources.HomePageFindAroundYou, Source={StaticResource LocalizedStrings}}"
                    Grid.Row="1"
                    HorizontalAlignment="Center"

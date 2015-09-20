@@ -15,6 +15,7 @@ namespace WindowsPhoneClient.UI.Infrastrucure.Unity
         {
             container.RegisterType<IGetPartnersInformationService, GetPartnersInformationService>();
             container.RegisterType<IMessageService, MessageService>();
+            container.RegisterType<INavigationService, NavigationService>();
         }
     }
 }

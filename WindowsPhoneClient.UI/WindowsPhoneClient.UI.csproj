@@ -98,14 +98,20 @@
     <Compile Include="DataTemplateSelectors\SponsorViewDataTemplateSelector.cs" />
     <Compile Include="Infrastrucure\AutoMapper\AutoMapperConfigurator.cs" />
     <Compile Include="Infrastrucure\BindingBase.cs" />
+    <Compile Include="Infrastrucure\Commands\DelegateCommand.cs" />
     <Compile Include="Infrastrucure\Unity\UnityContainerBootstrapper.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\PartnerModel.cs" />
+    <Compile Include="UserControls\SinilinkHeader.xaml.cs">
+      <DependentUpon>SinilinkHeader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewServices\IMessageService.cs" />
+    <Compile Include="ViewServices\INavigationService.cs" />
     <Compile Include="ViewServices\MessageService.cs" />
+    <Compile Include="ViewServices\NavigationService.cs" />
     <Page Include="ResourceDictionaries\HomePageResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +128,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Page Include="UserControls\SinilinkHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -159,7 +169,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UserControls\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
