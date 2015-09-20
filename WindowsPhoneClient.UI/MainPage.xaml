@@ -54,7 +54,8 @@
                 Content="{Binding LocalizedResources.HomePageAroundMe, Source={StaticResource LocalizedStrings}}"
                 HorizontalAlignment="Center"
                 Foreground="{StaticResource SinilinkBlue}"
-                Margin="0, 50, 0, 0"/>
+                Margin="0, 50, 0, 0"
+                Command="{Binding ShowAroundMeCommand}"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

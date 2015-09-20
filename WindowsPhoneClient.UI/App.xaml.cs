@@ -74,7 +74,7 @@ namespace WindowsPhoneClient.UI
             var unityContainer = new UnityContainer();
             UnityContainerBootstrapper.RegisterTypes(unityContainer);
             AutoMapperConfigurator.ConfigureAutoMapper();
-            var homePageViewModel = unityContainer.Resolve<HomePageViewModel>();
+            var homePageViewModel = unityContainer.Resolve<MainViewModel>();
             Resources.Add("HomePageViewModel", homePageViewModel);
 
             var screenWidth = UIHelperMethods.GetScreenWidth();

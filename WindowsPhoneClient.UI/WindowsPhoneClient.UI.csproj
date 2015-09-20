@@ -105,6 +105,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\PartnerModel.cs" />
+    <Compile Include="ShowAndShareAroundMePage.xaml.cs">
+      <DependentUpon>ShowAndShareAroundMePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SinilinkHeader.xaml.cs">
       <DependentUpon>SinilinkHeader.xaml</DependentUpon>
     </Compile>
@@ -121,13 +124,17 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="UIUtils\UIHelperMethods.cs" />
-    <Compile Include="ViewModels\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Page Include="ShowAndShareAroundMePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\SinilinkHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,16 +158,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Tiles\SinikinkTile-Medium.png" />
+    <Content Include="Assets\Tiles\SinikinkTile-Small.png" />
+    <Content Include="Assets\Tiles\SinilinkTile-Large.png" />
     <Content Include="README_FIRST.txt" />
-    <Content Include="Assets\Tiles\Screemshot.png" />
-    <Content Include="SinilinkLogo.png" />
+    <Content Include="Images\SinilinkLogo.png" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
-    <Content Include="Assets\Tiles\Стая.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">

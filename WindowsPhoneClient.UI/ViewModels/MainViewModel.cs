@@ -17,7 +17,7 @@ using WindowsPhoneClient.UI.ViewServices;
 
 namespace WindowsPhoneClient.UI.ViewModels
 {
-    public class HomePageViewModel : BindingBase
+    public class MainViewModel : BindingBase
     {
         private readonly IGetPartnersInformationService _getPartnersInformationService;
         private readonly IMessageService                _messageService;
@@ -33,13 +33,31 @@ namespace WindowsPhoneClient.UI.ViewModels
         {
             get { return _showSinilinkMenuCommand; }
         }
+
+        private ICommand _showAroundMeCommand;
+        public ICommand ShowAroundMeCommand
+        {
+            get
+            {
+                if (_showAroundMeCommand == null)
+                {
+                    _showAroundMeCommand = new DelegateCommand(ShowAroundMe, null);
+                }
+                return _showAroundMeCommand;
+            }
+        }
+
+        private void ShowAroundMe(object parameter)
+        {
+            _navigationService.Navigate("/ShowAndShareAroundMePage.xaml");
+        }
     
         public ObservableCollection<PartnerModel> PartnersInformation
         {
             get { return _partnersInformation; }
         }
 
-        public HomePageViewModel(IGetPartnersInformationService getPartnersInformationService, IMessageService messageService, INavigationService navigationService)
+        public MainViewModel(IGetPartnersInformationService getPartnersInformationService, IMessageService messageService, INavigationService navigationService)
         {
             _getPartnersInformationService = getPartnersInformationService;
             _messageService = messageService;
@@ -48,6 +66,11 @@ namespace WindowsPhoneClient.UI.ViewModels
 
         public async void LoadPartnersInformation()
         {
+            if (_partnersInformation.Count > 0)
+            {
+                return;
+            }
+            
             IEnumerable<Partner> partnersInformation = null;
             try
             {
