@@ -8,6 +8,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using WindowsPhoneClient.UI.Models;
 using WindowsPhoneClient.UI.Resources;
 using WindowsPhoneClient.UI.ViewModels;
 
@@ -44,6 +45,17 @@ namespace WindowsPhoneClient.UI
         {
             var viewModel = DataContext as MainViewModel;
             viewModel.LoadPartnersInformation();
+        }
+
+        private void SponsorsSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = lbxPartners.SelectedItem as PartnerModel;
+            if (selectedItem.LogoRelativePath.Contains("default"))
+            {
+                return;
+            }
+            var selectedValue = lbxPartners.ItemContainerGenerator.ContainerFromItem(lbxPartners.SelectedItem) as ListBoxItem;
+            selectedValue.ContentTemplate = App.Current.Resources["SelectedSponsorDataTemplate"] as DataTemplate;
         }
     }
 }

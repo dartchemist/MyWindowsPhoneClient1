@@ -3,16 +3,6 @@
     xmlns:converters="clr-namespace:WindowsPhoneClient.UI.Converters"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <ControlTemplate x:Key="SinilinkButtonControlTemplate" 
-                     TargetType="Button">
-        <TextBlock Text="{TemplateBinding Content}" 
-                   FontSize="{TemplateBinding FontSize}"
-                   Foreground="{TemplateBinding Foreground}"
-                   FontWeight="{TemplateBinding FontWeight}"
-                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                   VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
-    </ControlTemplate>
-    
     <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageConverter"/>
     
     <DataTemplate x:Key="DefaultLogoDataTemplate">
@@ -45,6 +35,41 @@
                 <TextBlock Text="{Binding Name}" 
                            HorizontalAlignment="Center"/>
             </StackPanel>
+        </Border>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="SelectedSponsorDataTemplate">
+        <Border BorderThickness="1"
+                CornerRadius="12"
+                BorderBrush="{StaticResource SinilinkBlue}"
+                Width="150"
+                Height="150"
+                Margin="7.5, 10, 0, 0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button Content="{Binding LocalizedResources.HomePageTemplateMapContent, Source={StaticResource LocalizedStrings}}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Foreground="{StaticResource SinilinkBlue}"
+                        Style="{StaticResource SinilinkButtonStyle}"
+                        Grid.Row="0"/>
+                <Border Height="1"
+                        BorderThickness="1"
+                        BorderBrush="Black" 
+                        Grid.Row="1"/>
+                <Button Content="{Binding LocalizedResources.HomePageTemplateInfoContent, Source={StaticResource LocalizedStrings}}"
+                        Grid.Row="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        Foreground="{StaticResource SinilinkBlue}" 
+                        Style="{StaticResource SinilinkButtonStyle}"/>
+            </Grid>
         </Border>
     </DataTemplate>
 </ResourceDictionary>

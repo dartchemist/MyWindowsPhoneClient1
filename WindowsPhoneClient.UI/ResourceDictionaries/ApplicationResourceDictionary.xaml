@@ -3,5 +3,41 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <local:LocalizedStrings xmlns:local="clr-namespace:WindowsPhoneClient.UI" x:Key="LocalizedStrings"/>
-    <SolidColorBrush Color="#76127170"  x:Key="SinilinkBlue"/>
+    <Color x:Key="SinilinkBlueColor">#39A0D6</Color>
+    <SolidColorBrush Color="{StaticResource SinilinkBlueColor}"  x:Key="SinilinkBlue"/>
+    
+    <Style x:Key="SinilinkButtonStyle"
+           TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock Text="{TemplateBinding Content}" 
+                               FontSize="{TemplateBinding FontSize}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontWeight="{TemplateBinding FontWeight}"
+                               HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                               VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                         <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Disabled">
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Foreground"
+                                                    To="Gray" />
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Enabled">
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Foreground"
+                                                    To="{StaticResource SinilinkBlueColor}" />
+                                </Storyboard>
+                            </VisualState>
+                            </VisualStateGroup>
+                             
+                        </VisualStateManager.VisualStateGroups>
+                    </TextBlock>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+       
+    </Style>
 </ResourceDictionary>

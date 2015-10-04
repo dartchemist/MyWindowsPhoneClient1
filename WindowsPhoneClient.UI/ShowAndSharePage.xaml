@@ -5,6 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:userControls="clr-namespace:WindowsPhoneClient.UI.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -13,4 +14,5 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
+    <userControls:ShowAndShare />
 </phone:PhoneApplicationPage>

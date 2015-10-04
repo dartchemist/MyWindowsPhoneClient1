@@ -128,9 +128,30 @@
     <value>Намерете около Вас</value>
   </data>
   <data name="CannotLoadPartnersInformation" xml:space="preserve">
-    <value>Не воже да бъде показана информация за спонсорите</value>
+    <value>Не може да бъде показана информация за партньорите</value>
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Грешка</value>
+  </data>
+  <data name="LocationTurnedOffMessage" xml:space="preserve">
+    <value>За да използвате приложението е необходимо локацията да е активна. Ще бъдете пренасочени към настройките на локацията</value>
+  </data>
+  <data name="RedirectionTitle" xml:space="preserve">
+    <value>Пренасочване</value>
+  </data>
+  <data name="HomePageTemplateInfoContent" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="HomePageTemplateMapContent" xml:space="preserve">
+    <value>Карта</value>
+  </data>
+  <data name="ShowAndShareHowMuchFreeTitle" xml:space="preserve">
+    <value>Колко е свободно около Вас?</value>
+  </data>
+  <data name="ShowAndShareRefreshContent" xml:space="preserve">
+    <value>Обнови</value>
+  </data>
+  <data name="ShowAndShareShareButtonText" xml:space="preserve">
+    <value>Сподели</value>
   </data>
 </root>

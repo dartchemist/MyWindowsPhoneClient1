@@ -16,6 +16,7 @@ using WindowsPhoneClient.UI.UIUtils;
 using WindowsPhoneClient.UI.ViewModels;
 using WindowsPhoneClient.CommonConstants;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace WindowsPhoneClient.UI
 {
@@ -26,8 +27,7 @@ namespace WindowsPhoneClient.UI
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
-        //private readonly ManualResetEvent _resetEvent = new ManualResetEvent(false);
-
+      
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
@@ -169,12 +169,8 @@ namespace WindowsPhoneClient.UI
             // Remove this handler since it is no longer needed
             if (IsLocationDisabled())
             {
-                //MessageBox.Show("Location settings will be launched", "Redirection", MessageBoxButton.OK);
-                //var launched = await Launcher.LaunchUriAsync(WindowsPhoneBuiltInAppsUris.LocationSettingsAppUri);
-                //if (launched)
-                //{
-                //    _resetEvent.WaitOne(1000);
-                //}
+                MessageBox.Show(AppResources.LocationTurnedOffMessage, AppResources.RedirectionTitle, MessageBoxButton.OK);
+                Launcher.LaunchUriAsync(WindowsPhoneBuiltInAppsUris.LocationSettingsAppUri);
             }
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
         }

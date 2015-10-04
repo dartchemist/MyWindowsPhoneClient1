@@ -61,7 +61,7 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не воже да бъде показана информация за спонсорите.
+        ///   Looks up a localized string similar to Не може да бъде показана информация за партньорите.
         /// </summary>
         public static string CannotLoadPartnersInformation {
             get {
@@ -97,11 +97,74 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Информация.
+        /// </summary>
+        public static string HomePageTemplateInfoContent {
+            get {
+                return ResourceManager.GetString("HomePageTemplateInfoContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Карта.
+        /// </summary>
+        public static string HomePageTemplateMapContent {
+            get {
+                return ResourceManager.GetString("HomePageTemplateMapContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to За да използвате приложението е необходимо локацията да е активна. Ще бъдете пренасочени към настройките на локацията.
+        /// </summary>
+        public static string LocationTurnedOffMessage {
+            get {
+                return ResourceManager.GetString("LocationTurnedOffMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пренасочване.
+        /// </summary>
+        public static string RedirectionTitle {
+            get {
+                return ResourceManager.GetString("RedirectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to bg-BG.
         /// </summary>
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Колко е свободно около Вас?.
+        /// </summary>
+        public static string ShowAndShareHowMuchFreeTitle {
+            get {
+                return ResourceManager.GetString("ShowAndShareHowMuchFreeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обнови.
+        /// </summary>
+        public static string ShowAndShareRefreshContent {
+            get {
+                return ResourceManager.GetString("ShowAndShareRefreshContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сподели.
+        /// </summary>
+        public static string ShowAndShareShareButtonText {
+            get {
+                return ResourceManager.GetString("ShowAndShareShareButtonText", resourceCulture);
             }
         }
     }

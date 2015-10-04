@@ -10,7 +10,7 @@
     d:DesignHeight="480" d:DesignWidth="480">
 
     <Button Content="SINILINK"
-            Template="{StaticResource SinilinkButtonControlTemplate}"
+            Style="{StaticResource SinilinkButtonStyle}"
             HorizontalAlignment="Center"
             FontSize="30"
             Foreground="{StaticResource SinilinkBlue}"

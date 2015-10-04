@@ -15,17 +15,19 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
-    Loaded="HomePageLoaded">
-    
+    Loaded="HomePageLoaded"
+    x:Name="homePage">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <userControls:SinilinkHeader Grid.Row="0"/>
+        
         <TextBlock Text="{Binding LocalizedResources.HomePageFindAroundYou, Source={StaticResource LocalizedStrings}}"
                    Grid.Row="1"
                    HorizontalAlignment="Center"
@@ -34,7 +36,9 @@
                    FontSize="26"/>
         <ListBox Grid.Row="2"
                  ItemsSource="{Binding PartnersInformation}"
-                 Margin="0, 10, 0, 0">
+                 Margin="0, 10, 0, 0"
+                 SelectionChanged="SponsorsSelectionChanged"
+                 x:Name="lbxPartners">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <templateSelectors:SponsorViewDataTemplateSelector Content="{Binding}"
@@ -50,7 +54,7 @@
         </ListBox>
         
         <Button Grid.Row="3"
-                Template="{StaticResource SinilinkButtonControlTemplate}" 
+                Style="{StaticResource SinilinkButtonStyle}"
                 Content="{Binding LocalizedResources.HomePageAroundMe, Source={StaticResource LocalizedStrings}}"
                 HorizontalAlignment="Center"
                 Foreground="{StaticResource SinilinkBlue}"

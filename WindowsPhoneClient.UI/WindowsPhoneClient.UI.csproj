@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
+    <Compile Include="Converters\SliderValueToPercentConverter.cs" />
     <Compile Include="DataTemplateSelectors\DataTemplateSelector.cs" />
     <Compile Include="DataTemplateSelectors\SponsorViewDataTemplateSelector.cs" />
     <Compile Include="Infrastrucure\AutoMapper\AutoMapperConfigurator.cs" />
@@ -105,8 +106,15 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\PartnerModel.cs" />
-    <Compile Include="ShowAndShareAroundMePage.xaml.cs">
-      <DependentUpon>ShowAndShareAroundMePage.xaml</DependentUpon>
+    <Page Include="ResourceDictionaries\ShowAndShareResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="ShowAndSharePage.xaml.cs">
+      <DependentUpon>ShowAndSharePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ShowAndShare.xaml.cs">
+      <DependentUpon>ShowAndShare.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SinilinkHeader.xaml.cs">
       <DependentUpon>SinilinkHeader.xaml</DependentUpon>
@@ -131,7 +139,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Page Include="ShowAndShareAroundMePage.xaml">
+    <Page Include="ShowAndSharePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ShowAndShare.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

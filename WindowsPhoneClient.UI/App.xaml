@@ -13,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ResourceDictionaries/ApplicationResourceDictionary.xaml" />
                 <ResourceDictionary Source="ResourceDictionaries/HomePageResourceDictionary.xaml" />
+                <ResourceDictionary Source="ResourceDictionaries/ShowAndShareResourceDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

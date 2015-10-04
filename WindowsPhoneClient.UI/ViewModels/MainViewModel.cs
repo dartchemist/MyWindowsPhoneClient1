@@ -49,7 +49,7 @@ namespace WindowsPhoneClient.UI.ViewModels
 
         private void ShowAroundMe(object parameter)
         {
-            _navigationService.Navigate("/ShowAndShareAroundMePage.xaml");
+            _navigationService.Navigate("/ShowAndSharePage.xaml");
         }
     
         public ObservableCollection<PartnerModel> PartnersInformation
