@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
+    <Compile Include="Converters\GeoCoordinateToCoordinateModelConverter.cs" />
     <Compile Include="Converters\SliderValueToPercentConverter.cs" />
     <Compile Include="DataTemplateSelectors\DataTemplateSelector.cs" />
     <Compile Include="DataTemplateSelectors\SponsorViewDataTemplateSelector.cs" />
@@ -105,11 +106,16 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CoordinateModel.cs" />
+    <Compile Include="Models\MapItemModel.cs" />
+    <Compile Include="Models\MapMarkerModel.cs" />
     <Compile Include="Models\PartnerModel.cs" />
     <Page Include="ResourceDictionaries\ShowAndShareResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Services\IStorageService.cs" />
+    <Compile Include="Services\StorageService.cs" />
     <Compile Include="ShowAndSharePage.xaml.cs">
       <DependentUpon>ShowAndSharePage.xaml</DependentUpon>
     </Compile>
@@ -119,10 +125,17 @@
     <Compile Include="UserControls\SinilinkHeader.xaml.cs">
       <DependentUpon>SinilinkHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewServices\IMessageService.cs" />
-    <Compile Include="ViewServices\INavigationService.cs" />
-    <Compile Include="ViewServices\MessageService.cs" />
-    <Compile Include="ViewServices\NavigationService.cs" />
+    <Compile Include="UserControls\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ShowAndShareAroundMeViewModel.cs" />
+    <Compile Include="Services\ViewServices\GetPositionService.cs" />
+    <Compile Include="Services\ViewServices\IGetPositionService.cs" />
+    <Compile Include="Services\ViewServices\IMessageService.cs" />
+    <Compile Include="Services\ViewServices\INavigationService.cs" />
+    <Compile Include="Services\ViewServices\MessageService.cs" />
+    <Compile Include="Services\ViewServices\NavigationService.cs" />
     <Page Include="ResourceDictionaries\HomePageResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SinilinkHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

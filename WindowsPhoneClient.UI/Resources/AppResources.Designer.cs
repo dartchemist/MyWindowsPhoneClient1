@@ -97,6 +97,15 @@ namespace WindowsPhoneClient.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Зарежда се информация за партньорите.
+        /// </summary>
+        public static string HomePagePartnersLoadingMessage {
+            get {
+                return ResourceManager.GetString("HomePagePartnersLoadingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Информация.
         /// </summary>
         public static string HomePageTemplateInfoContent {

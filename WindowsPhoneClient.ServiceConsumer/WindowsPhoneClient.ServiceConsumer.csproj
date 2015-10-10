@@ -84,7 +84,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BusinessModels\Partner.cs" />
+    <Compile Include="GetParkingAvailabilityService.cs" />
     <Compile Include="GetPartnersInformationService.cs" />
+    <Compile Include="IGetParkingAvailabilityService.cs" />
     <Compile Include="IGetPartnersInformationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

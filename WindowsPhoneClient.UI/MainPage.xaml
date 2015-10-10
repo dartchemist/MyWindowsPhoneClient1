@@ -16,7 +16,7 @@
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
     Loaded="HomePageLoaded"
-    x:Name="homePage">
+    x:Name="HomePage">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,6 +25,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <!--<userControls:SplashScreen IsVisible="{Binding IsSplashScreenVisible}"
+                                   Message="{Binding LocalizedResources.HomePagePartnersLoadingMessage, Source={StaticResource LocalizedStrings}}"/>-->
 
         <userControls:SinilinkHeader Grid.Row="0"/>
         

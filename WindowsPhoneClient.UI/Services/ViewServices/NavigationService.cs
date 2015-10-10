@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Phone.Controls;
 
-namespace WindowsPhoneClient.UI.ViewServices
+namespace WindowsPhoneClient.UI.Services.ViewServices
 {
     public class NavigationService : INavigationService
     {

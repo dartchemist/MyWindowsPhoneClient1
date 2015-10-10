@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using WindowsPhoneClient.ServiceConsumer;
-using WindowsPhoneClient.UI.ViewServices;
+using WindowsPhoneClient.UI.Services;
+using WindowsPhoneClient.UI.Services.ViewServices;
 
 namespace WindowsPhoneClient.UI.Infrastrucure.Unity
 {
@@ -16,6 +17,9 @@ namespace WindowsPhoneClient.UI.Infrastrucure.Unity
             container.RegisterType<IGetPartnersInformationService, GetPartnersInformationService>();
             container.RegisterType<IMessageService, MessageService>();
             container.RegisterType<INavigationService, NavigationService>();
+            container.RegisterType<IGetPositionService, GetPositionService>();
+            container.RegisterType<IGetParkingAvailabilityService, GetParkingAvailabilityService>();
+            container.RegisterType<IStorageService, StorageService>();
         }
     }
 }

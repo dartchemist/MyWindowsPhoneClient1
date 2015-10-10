@@ -11,5 +11,6 @@ namespace WindowsPhoneClient.CommonConstants
         private const string DomainUrl = "http://www.sinilink.com";
         public const string DomainMediaUrl = DomainUrl + "/media";
         public const string GetPartnersInformationUrl = DomainUrl + "/getPartnersInformation";
+        public const string GetAvailabilityAndDisplayPartnersAroundMe = DomainUrl + "/getAvailabilityAndDisplayPartners";
     }
 }

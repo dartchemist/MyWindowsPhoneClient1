@@ -7,13 +7,18 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Maps.Controls;
+using Microsoft.Phone.Maps.Toolkit;
 using Microsoft.Phone.Shell;
 using Windows.Devices.Geolocation;
+using WindowsPhoneClient.UI.ViewModels;
 
 namespace WindowsPhoneClient.UI.UserControls
 {
     public partial class ShowAndShare : UserControl
     {
+        private ShowAndShareAroundMeViewModel _dataContext;
+        
         public static readonly DependencyProperty MapPositionProperty =
             DependencyProperty.Register("MapPosition", typeof(GeoCoordinate), typeof(ShowAndShare), null);
 
@@ -28,15 +33,33 @@ namespace WindowsPhoneClient.UI.UserControls
             InitializeComponent();
         }
 
-        private async void MapLoaded(object sender, RoutedEventArgs e)
+        private void ShowAndShareLoaded(object sender, RoutedEventArgs e)
         {
-            var geolocator = new Geolocator();
-            geolocator.DesiredAccuracyInMeters = 50;
+            _dataContext = DataContext as ShowAndShareAroundMeViewModel;
+            SetMapView();
+            //SetMapControlItemsSource();
+        }
 
-            var geoPosition = await geolocator.GetGeopositionAsync();
+        private void SetMapView()
+        {
+            if (_dataContext.MapItems.Count == 0)
+            {
+                var currentLocation = new GeoCoordinate(_dataContext.CurrentLocation.Latitude, _dataContext.CurrentLocation.Longitude);
+                Map.SetView(currentLocation, Map.ZoomLevel);
+            }
+            else
+            {
+                var firstPartnerLocation = new GeoCoordinate(_dataContext.MapItems[0].Coordinate.Latitude, _dataContext.MapItems[0].Coordinate.Longitude);
+                Map.SetView(firstPartnerLocation, Map.ZoomLevel);
+            }
+        }
 
-            Map.Center = new GeoCoordinate(geoPosition.Coordinate.Latitude, geoPosition.Coordinate.Longitude);
-            Map.ZoomLevel = 15;
+        private void SetMapControlItemsSource()
+        {
+            MapExtensions.GetChildren(Map)
+                .OfType<MapItemsControl>()
+                .First()
+                .ItemsSource = _dataContext.MapItems;
         }
     }
 }

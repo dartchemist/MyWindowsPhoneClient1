@@ -13,11 +13,12 @@ using WindowsPhoneClient.UI.Infrastrucure;
 using WindowsPhoneClient.UI.Infrastrucure.Commands;
 using WindowsPhoneClient.UI.Models;
 using WindowsPhoneClient.UI.Resources;
-using WindowsPhoneClient.UI.ViewServices;
+using WindowsPhoneClient.UI.Services;
+using WindowsPhoneClient.UI.Services.ViewServices;
 
 namespace WindowsPhoneClient.UI.ViewModels
 {
-    public class MainViewModel : BindingBase
+    public class MainViewModel : BaseViewModel
     {
         private readonly IGetPartnersInformationService _getPartnersInformationService;
         private readonly IMessageService                _messageService;
@@ -25,6 +26,13 @@ namespace WindowsPhoneClient.UI.ViewModels
 
         private readonly ObservableCollection<PartnerModel> _partnersInformation = new ObservableCollection<PartnerModel>();
 
+        private bool _isSplashScreenVisible;
+        public bool IsSplashScreenVisible
+        {
+            get { return _isSplashScreenVisible; }
+            set { SetField<bool>(ref _isSplashScreenVisible, value); }
+        }
+        
         private readonly ICommand _showSinilinkMenuCommand = new DelegateCommand((parameter) =>
             {
                 
@@ -57,7 +65,8 @@ namespace WindowsPhoneClient.UI.ViewModels
             get { return _partnersInformation; }
         }
 
-        public MainViewModel(IGetPartnersInformationService getPartnersInformationService, IMessageService messageService, INavigationService navigationService)
+        public MainViewModel(IStorageService storageService, IGetPartnersInformationService getPartnersInformationService, IMessageService messageService, INavigationService navigationService)
+            :base(storageService)
         {
             _getPartnersInformationService = getPartnersInformationService;
             _messageService = messageService;
@@ -74,7 +83,12 @@ namespace WindowsPhoneClient.UI.ViewModels
             IEnumerable<Partner> partnersInformation = null;
             try
             {
+                IsSplashScreenVisible = true;
                 partnersInformation = await _getPartnersInformationService.GetPartnersInformation();
+                foreach (var partner in partnersInformation)
+                {
+                    _partnersInformation.Add(Mapper.Map<Partner, PartnerModel>(partner));
+                }
             }
             catch (Exception)
             {
@@ -82,9 +96,9 @@ namespace WindowsPhoneClient.UI.ViewModels
                 _messageService.ShowMessage(AppResources.CannotLoadPartnersInformation, AppResources.ErrorTitle);
                 return;
             }
-            foreach (var partner in partnersInformation)
+            finally
             {
-                _partnersInformation.Add(Mapper.Map<Partner, PartnerModel>(partner));
+                IsSplashScreenVisible = false;
             }
         }
     }

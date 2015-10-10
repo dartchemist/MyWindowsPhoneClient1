@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+//using WindowsPhoneClientUI.Services.ViewServices;
 
-namespace WindowsPhoneClient.UI.ViewServices
+namespace WindowsPhoneClient.UI.Services.ViewServices
 {
     public class MessageService : IMessageService
     {

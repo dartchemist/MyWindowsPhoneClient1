@@ -70,15 +70,19 @@ namespace WindowsPhoneClient.UI
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             ThemeManager.ToLightTheme();
+            var pageWidth = Application.Current.Host.Content.ActualWidth;
+            var pageHeight = Application.Current.Host.Content.ActualHeight;
+
+            Resources.Add("ScreenWidth", pageWidth);
+            Resources.Add("ScreenHeight", pageHeight);
             
             var unityContainer = new UnityContainer();
             UnityContainerBootstrapper.RegisterTypes(unityContainer);
             AutoMapperConfigurator.ConfigureAutoMapper();
             var homePageViewModel = unityContainer.Resolve<MainViewModel>();
+            var showAndShareViewModel = unityContainer.Resolve<ShowAndShareAroundMeViewModel>();
             Resources.Add("HomePageViewModel", homePageViewModel);
-
-            var screenWidth = UIHelperMethods.GetScreenWidth();
-            Resources.Add("ScreenWidth", screenWidth);
+            Resources.Add("ShowAndShareAroundMeViewModel", showAndShareViewModel);
         }
 
         // Code to execute when the application is activated (brought to foreground)

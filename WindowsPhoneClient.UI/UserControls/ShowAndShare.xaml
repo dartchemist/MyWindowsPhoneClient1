@@ -4,13 +4,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    xmlns:mapsToolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:converters="clr-namespace:WindowsPhoneClient.UI.Converters"
     xmlns:userControls="clr-namespace:WindowsPhoneClient.UI.UserControls"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480">
+    d:DesignHeight="480" d:DesignWidth="480"
+    x:Name="ShowAndShareControl"
+    Loaded="ShowAndShareLoaded">
+    
+    <UserControl.Resources>
+        <Ellipse x:Key="CurrentPositionIndicator"
+                 Fill="Blue"
+                 Stroke="Blue"
+                 Height="25"
+                 Width="25"/>
+    </UserControl.Resources>
     
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
@@ -23,12 +34,37 @@
             <userControls:SinilinkHeader HorizontalAlignment="Center"/>
             <Button Style="{StaticResource SinilinkButtonStyle}" 
                     Content="{Binding LocalizedResources.ShowAndShareRefreshContent, Source={StaticResource LocalizedStrings}}"
-                    HorizontalAlignment="Right"/>
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0, 0, 20, 0"
+                    Foreground="{StaticResource SinilinkBlue}"
+                    IsEnabled="{Binding CanUpdateMapContent}"/>
         </Grid>
         
         <maps:Map Grid.Row="1" 
-                  Loaded="MapLoaded"
-                  x:Name="Map"/>
+                  x:Name="Map"
+                  ZoomLevel="17">
+            <mapsToolkit:MapExtensions.Children>
+                <mapsToolkit:UserLocationMarker GeoCoordinate="{Binding CurrentLocation, Converter={StaticResource CoordinateConverter}}"/>
+                <mapsToolkit:MapItemsControl>
+                    <mapsToolkit:MapItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <mapsToolkit:Pushpin GeoCoordinate="{Binding Coordinate, Converter={StaticResource CoordinateConverter}}">
+                                <mapsToolkit:Pushpin.Template>
+                                    <ControlTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock FontSize="16"
+                                                       Text="{Binding Marker.Text}"/>
+                                            <Image Source="{Binding Marker.MarkerImage, Converter={StaticResource ByteArrayToImageConverter}}" />
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </mapsToolkit:Pushpin.Template>
+                            </mapsToolkit:Pushpin>
+                        </DataTemplate>
+                    </mapsToolkit:MapItemsControl.ItemTemplate>
+                </mapsToolkit:MapItemsControl>
+            </mapsToolkit:MapExtensions.Children>
+        </maps:Map>
         
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
@@ -44,14 +80,25 @@
             <Slider Grid.Row="1"
                     Minimum="0"
                     Maximum="100"
-                    x:Name="AvailabilityPercentage"/>
-            <Button Grid.Row="2"
+                    x:Name="AvailabilityPercentage"
+                    Width="300"
+                    Height="100"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"/>
+            <Button Grid.Row="1"
                     Style="{StaticResource SinilinkButtonStyle}" 
                     Content="{Binding LocalizedResources.ShowAndShareShareButtonText, Source={StaticResource LocalizedStrings}}"
-                    />
-            <TextBlock Grid.Row="2"
-                       HorizontalAlignment="Center"
-                       Text="{Binding ElementName=AvailabilityPercentage, Path=Value, Converter={StaticResource SliderValueToPercentConverter}}"/>
+                    HorizontalAlignment="Right"
+                    Margin="0, 0, 75, 33.5"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource SinilinkBlue}"
+                    FontSize="22"/>
+            <TextBlock Grid.Row="1"
+                       HorizontalAlignment="Right"
+                       Text="{Binding ElementName=AvailabilityPercentage, Path=Value, Converter={StaticResource SliderValueToPercentConverter}}"
+                       Margin="0, 0, 20, 30"
+                       VerticalAlignment="Center"
+                       FontSize="22"/>
         </Grid>
     </Grid>
 </UserControl>

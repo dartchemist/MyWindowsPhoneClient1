@@ -1,10 +1,13 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <local:LocalizedStrings xmlns:local="clr-namespace:WindowsPhoneClient.UI" x:Key="LocalizedStrings"/>
     <Color x:Key="SinilinkBlueColor">#39A0D6</Color>
     <SolidColorBrush Color="{StaticResource SinilinkBlueColor}"  x:Key="SinilinkBlue"/>
+    
+    <system:String x:Key="Refresh">btnRefresh</system:String>
     
     <Style x:Key="SinilinkButtonStyle"
            TargetType="Button">
@@ -16,13 +19,16 @@
                                Foreground="{TemplateBinding Foreground}"
                                FontWeight="{TemplateBinding FontWeight}"
                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                               VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                               VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                               x:Name="SinilinkButtonContent">
                          <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Disabled">
                                 <Storyboard>
-                                    <ColorAnimation Storyboard.TargetProperty="Foreground"
-                                                    To="Gray" />
+                                    <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).Color"
+                                                    Storyboard.TargetName="SinilinkButtonContent"
+                                                    To="Gray" 
+                                                    Duration="0:0:0"/>
                                 </Storyboard>
                             </VisualState>
                             <VisualState x:Name="Enabled">

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using WindowsPhoneClient.UI.Services.ViewServices;
 
 namespace WindowsPhoneClient.UI.Infrastrucure
 {
@@ -15,10 +17,13 @@ namespace WindowsPhoneClient.UI.Infrastrucure
         protected virtual void OnPropertyChanged(string propertyName)
         {
             var handler = PropertyChanged;
-            if (handler == null)
-                return;
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    if (handler == null)
+                        return;
 
-            handler(this, new PropertyChangedEventArgs(propertyName));
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                });
         }
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName]string propertyName =  null)

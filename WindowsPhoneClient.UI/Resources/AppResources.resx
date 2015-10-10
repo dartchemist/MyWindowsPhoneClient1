@@ -154,4 +154,7 @@
   <data name="ShowAndShareShareButtonText" xml:space="preserve">
     <value>Сподели</value>
   </data>
+  <data name="HomePagePartnersLoadingMessage" xml:space="preserve">
+    <value>Зарежда се информация за партньорите</value>
+  </data>
 </root>

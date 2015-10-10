@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsPhoneClient.UI.ViewServices
+namespace WindowsPhoneClient.UI.Services.ViewServices
 {
     public interface INavigationService
     {
