@@ -9,6 +9,13 @@ namespace WindowsPhoneClient.UI.Models
 {
     public class PartnerModel : BindingBase
     {
+        private int _branchKey;
+        public int BranchKey
+        {
+            get { return _branchKey; }
+            set { SetField<int>(ref _branchKey, value); }
+        }
+        
         private string _name;
         public string Name
         {
@@ -30,11 +37,18 @@ namespace WindowsPhoneClient.UI.Models
             set { SetField<byte[]>(ref _logo, value); }
         }
 
-        private string _markerImage;
-        public string MarkerImage
+        private string _markerImageRelativePath;
+        public string MarkerImageRelativePath
+        {
+            get { return _markerImageRelativePath; }
+            set { SetField<string>(ref _markerImageRelativePath, value); }
+        }
+
+        private byte[] _markerImage;
+        public byte[] MarkerImage
         {
             get { return _markerImage; }
-            set { SetField<string>(ref _markerImage, value); }
+            set { SetField<byte[]>(ref _markerImage, value); }
         }
     }
 }

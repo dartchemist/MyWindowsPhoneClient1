@@ -16,11 +16,7 @@ namespace WindowsPhoneClient.UI.Services.ViewServices
             geolocator.DesiredAccuracyInMeters = 50;
 
             var currentPosition = await geolocator.GetGeopositionAsync();
-            return new CoordinateModel
-            {
-                Latitude = currentPosition.Coordinate.Latitude,
-                Longitude = currentPosition.Coordinate.Longitude
-            };
+            return new CoordinateModel(currentPosition.Coordinate.Latitude, currentPosition.Coordinate.Longitude);
         }
     }
 }

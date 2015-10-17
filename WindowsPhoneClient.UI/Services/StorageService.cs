@@ -8,10 +8,14 @@ namespace WindowsPhoneClient.UI.Services
 {
     public class StorageService : IStorageService
     {
-        private readonly Dictionary<string, object> _resources;
+        private readonly Dictionary<string, object> _resources = new Dictionary<string,object>();
         
         public void AddItem(string key, object item)
         {
+            if (_resources.ContainsKey(key))
+            {
+                return;
+            }
             _resources.Add(key, item);
         }
 

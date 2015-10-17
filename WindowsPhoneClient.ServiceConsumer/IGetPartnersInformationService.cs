@@ -10,5 +10,6 @@ namespace WindowsPhoneClient.ServiceConsumer
     public interface IGetPartnersInformationService
     {
         Task<IEnumerable<Partner>> GetPartnersInformation();
+        int GetTimerDuration();
     }
 }

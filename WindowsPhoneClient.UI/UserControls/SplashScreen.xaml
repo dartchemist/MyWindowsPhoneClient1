@@ -15,7 +15,7 @@
         <Grid x:Name="LayoutRoot"
               Width="{Binding ElementName=SplashScreenControl, Path=Width}"
               Height="{Binding ElementName=SplashScreenControl, Path=Height}"
-              Background="White">
+              Background="#80FFFFFF">
             <ProgressBar IsIndeterminate="True" />
             <TextBlock Text="{Binding ElementName=SplashScreenControl, Path=Message}" 
                    HorizontalAlignment="Center"

@@ -12,7 +12,12 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="False">
 
-    <userControls:ShowAndShare />
+    <Grid>
+        <userControls:ShowAndShare MapPosition="{Binding CurrentMapPosition,
+                                                     Converter={StaticResource CoordinateConverter},
+                                                     Mode=TwoWay}"/>
+    </Grid>
+    
 </phone:PhoneApplicationPage>

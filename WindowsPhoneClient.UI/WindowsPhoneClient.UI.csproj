@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
     <Compile Include="Converters\GeoCoordinateToCoordinateModelConverter.cs" />
+    <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\SliderValueToPercentConverter.cs" />
     <Compile Include="DataTemplateSelectors\DataTemplateSelector.cs" />
     <Compile Include="DataTemplateSelectors\SponsorViewDataTemplateSelector.cs" />
@@ -109,21 +110,40 @@
     <Compile Include="Models\CoordinateModel.cs" />
     <Compile Include="Models\MapItemModel.cs" />
     <Compile Include="Models\MapMarkerModel.cs" />
+    <Compile Include="Models\NearestPartnerInformationModel.cs" />
     <Compile Include="Models\PartnerModel.cs" />
+    <Page Include="PartnerInformationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ResourceDictionaries\ShowAndShareResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="PartnerInformationPage.xaml.cs">
+      <DependentUpon>PartnerInformationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\IStorageService.cs" />
     <Compile Include="Services\StorageService.cs" />
+    <Compile Include="Services\ViewServices\DialogMessageService.cs" />
     <Compile Include="ShowAndSharePage.xaml.cs">
       <DependentUpon>ShowAndSharePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TiltEffect\TiltEffect.cs" />
+    <Compile Include="UserControls\Dialog.xaml.cs">
+      <DependentUpon>Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SharePanel.xaml.cs">
+      <DependentUpon>SharePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ShowAndShare.xaml.cs">
       <DependentUpon>ShowAndShare.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SinilinkHeader.xaml.cs">
       <DependentUpon>SinilinkHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SinilinkMenu.xaml.cs">
+      <DependentUpon>SinilinkMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
@@ -134,7 +154,7 @@
     <Compile Include="Services\ViewServices\IGetPositionService.cs" />
     <Compile Include="Services\ViewServices\IMessageService.cs" />
     <Compile Include="Services\ViewServices\INavigationService.cs" />
-    <Compile Include="Services\ViewServices\MessageService.cs" />
+    <Compile Include="Services\ViewServices\DefaultMessageService.cs" />
     <Compile Include="Services\ViewServices\NavigationService.cs" />
     <Page Include="ResourceDictionaries\HomePageResourceDictionary.xaml">
       <SubType>Designer</SubType>
@@ -156,11 +176,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SharePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ShowAndShare.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SinilinkHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SinilinkMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,6 +264,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SinilinkControls\SinilinkControls.csproj">
+      <Project>{6ef270e1-14cf-49cc-8c6a-42165076c6dd}</Project>
+      <Name>SinilinkControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WindowsPhoneClient.CommonConstants\WindowsPhoneClient.CommonConstants.csproj">
       <Project>{346C1B70-8B35-487D-B07F-14869C38109F}</Project>
       <Name>WindowsPhoneClient.CommonConstants</Name>

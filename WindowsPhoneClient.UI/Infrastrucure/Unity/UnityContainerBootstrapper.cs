@@ -15,11 +15,11 @@ namespace WindowsPhoneClient.UI.Infrastrucure.Unity
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IGetPartnersInformationService, GetPartnersInformationService>();
-            container.RegisterType<IMessageService, MessageService>();
+            container.RegisterType<IMessageService, DialogMessageService>();
             container.RegisterType<INavigationService, NavigationService>();
             container.RegisterType<IGetPositionService, GetPositionService>();
-            container.RegisterType<IGetParkingAvailabilityService, GetParkingAvailabilityService>();
-            container.RegisterType<IStorageService, StorageService>();
+            container.RegisterType<IParkingAvailabilityService, ParkingAvailabilityService>();
+            container.RegisterType<IStorageService, StorageService>(new ContainerControlledLifetimeManager());
         }
     }
 }

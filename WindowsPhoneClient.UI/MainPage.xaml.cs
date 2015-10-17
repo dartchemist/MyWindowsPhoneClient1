@@ -24,6 +24,8 @@ namespace WindowsPhoneClient.UI
 
         private void HomePageLoaded(object sender, RoutedEventArgs e)
         {
+            //sinilinkMenu.Width = (double) App.Current.Resources["ScreenWidth"];
+            //sinilinkMenu.Height = (double) App.Current.Resources["ScreenHeight"];
             var viewModel = DataContext as MainViewModel;
             viewModel.LoadPartnersInformation();
         }
@@ -35,6 +37,7 @@ namespace WindowsPhoneClient.UI
             {
                 return;
             }
+            //var x = App.Current.Resources["SponsorWithLogoDataTemplate"];
             var selectedValue = lbxPartners.ItemContainerGenerator.ContainerFromItem(lbxPartners.SelectedItem) as ListBoxItem;
             selectedValue.ContentTemplate = App.Current.Resources["SelectedSponsorDataTemplate"] as DataTemplate;
         }

@@ -176,5 +176,68 @@ namespace WindowsPhoneClient.UI.Resources {
                 return ResourceManager.GetString("ShowAndShareShareButtonText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отказ.
+        /// </summary>
+        public static string SinilinkDialogCancelButtonText {
+            get {
+                return ResourceManager.GetString("SinilinkDialogCancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добре.
+        /// </summary>
+        public static string SinilinkDialogOkButtonText {
+            get {
+                return ResourceManager.GetString("SinilinkDialogOkButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Откажи.
+        /// </summary>
+        public static string SinilinkMenuCancel {
+            get {
+                return ResourceManager.GetString("SinilinkMenuCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Мнения и контакти.
+        /// </summary>
+        public static string SinilinkMenuFeedbackAndContacts {
+            get {
+                return ResourceManager.GetString("SinilinkMenuFeedbackAndContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оценете ни.
+        /// </summary>
+        public static string SinilinkMenuRate {
+            get {
+                return ResourceManager.GetString("SinilinkMenuRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Покажи образец за този екран.
+        /// </summary>
+        public static string SinilinkMenuShowTutotial {
+            get {
+                return ResourceManager.GetString("SinilinkMenuShowTutotial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Условия за ползване.
+        /// </summary>
+        public static string SinilinkMenuTerms {
+            get {
+                return ResourceManager.GetString("SinilinkMenuTerms", resourceCulture);
+            }
+        }
     }
 }

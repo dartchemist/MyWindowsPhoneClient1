@@ -34,7 +34,8 @@
                             <VisualState x:Name="Enabled">
                                 <Storyboard>
                                     <ColorAnimation Storyboard.TargetProperty="Foreground"
-                                                    To="{StaticResource SinilinkBlueColor}" />
+                                                    To="{StaticResource SinilinkBlueColor}" 
+                                                    Duration="0:0:0"/>
                                 </Storyboard>
                             </VisualState>
                             </VisualStateGroup>

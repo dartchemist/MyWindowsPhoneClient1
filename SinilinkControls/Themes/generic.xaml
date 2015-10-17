@@ -1,0 +1,122 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    xmlns:local="clr-namespace:SinilinkControls"
+    xmlns:converters="clr-namespace:SinilinkControls.Converters">
+    
+    <converters:DialogButtonsToHorizontalAlignmentConverter x:Key="HorizontalAlignmentConverter"/>
+    <converters:DialogButtonsToVisibilityConverter x:Key="VisibilityConverter"/>
+    <converters:DialogButtonsToThicknessConverter x:Key="ThicknessConverter"/>
+    <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    
+    <SolidColorBrush x:Key="SinilinkBrush"
+                     Color="#39A0D6"/>
+    
+    <Style x:Key="DialogButtonStyle"
+           TargetType="Button">
+        <Setter Property="MinWidth"
+                Value="100"/>
+        <Setter Property="Foreground"
+                Value="White"/>
+        <Setter Property="FontSize"
+                Value="20"/>
+        <Setter Property="Height"
+                Value="45"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="12"
+                            Background="{StaticResource SinilinkBrush}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            BorderBrush="{StaticResource SinilinkBrush}"
+                            BorderThickness="1">
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="OkButtonDialogStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource DialogButtonStyle}">
+
+    </Style>
+
+    <Style x:Key="CancelButtonDialogStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource DialogButtonStyle}">
+        <Setter Property="HorizontalAlignment"
+                Value="Right"/>
+    </Style>
+    
+    <Style TargetType="local:DialogBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DialogBox">
+                    <Grid Background="#90696969"
+                          Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, 
+                                               Path=IsOpen, 
+                                               Mode=TwoWay,
+                                               Converter={StaticResource BooleanToVisibilityConverter}}"
+                          Width="{TemplateBinding Width}"
+                          Height="{TemplateBinding Height}">
+                        <Border Background="White"
+                                MinWidth="350"
+                                MinHeight="200"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Border Grid.Row="0"
+                                        Background="{StaticResource SinilinkBrush}"
+                                        BorderBrush="{StaticResource SinilinkBrush}">
+                                    <TextBlock Text="{TemplateBinding Title}"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"
+                                               FontSize="22"/>
+                                </Border>
+                                
+                                <ContentPresenter Grid.Row="1"
+                                                  Content="{TemplateBinding Content}"/>
+                                
+                                <Grid Grid.Row="2">
+                                    <Button HorizontalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, 
+                                                                          Path=Buttons, 
+                                                                          Converter={StaticResource HorizontalAlignmentConverter}}"
+                                            Content="{TemplateBinding OkButtonContent}"
+                                            Style="{StaticResource OkButtonDialogStyle}"
+                                            Margin="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                                             Path=Buttons,
+                                                             Converter={StaticResource ThicknessConverter},
+                                                             ConverterParameter=Ok}"
+                                            x:Name="OkButton"/>
+                                    <Button Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                                                 Path=Buttons,
+                                                                 Converter={StaticResource VisibilityConverter}}"
+                                            Content="{TemplateBinding CancelButtonContent}"
+                                            Style="{StaticResource CancelButtonDialogStyle}"
+                                            Margin="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                                             Path=Buttons,
+                                                             Converter={StaticResource ThicknessConverter},
+                                                             ConverterParameter=Cancel}"
+                                            x:Name="CancelButton"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

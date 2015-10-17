@@ -15,7 +15,8 @@ namespace WindowsPhoneClient.ServiceConsumer.BusinessModels
         public string VideoUrl { get; set; }
         public string LogoRelativePath { get; set; }
         public byte[] Logo { get; set; }
-        public string MarkerImage { get; set; }
+        public string MarkerImageRelativePath { get; set; }
+        public byte[] MarkerImage { get; set; }
         public ICollection<string> Thumbnails { get; set; }
         public ICollection<string> AdvertismentImages { get; set; }
 

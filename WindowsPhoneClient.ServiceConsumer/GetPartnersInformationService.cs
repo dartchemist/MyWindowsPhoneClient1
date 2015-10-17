@@ -9,17 +9,25 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using WindowsPhoneClient.CommonConstants;
+using System.Net.Http.Headers;
 
 namespace WindowsPhoneClient.ServiceConsumer
 {
     public class GetPartnersInformationService : IGetPartnersInformationService
-    {   
+    {
+        private string _partnersInfo;
+        
         public async Task<IEnumerable<Partner>> GetPartnersInformation()
         {
             var partnersInformation = new List<Partner>();
             using (var httpClient = new HttpClient())
             {
+                #if DEBUG   
+                ServiceUtils.AddAuthenticationHeader(httpClient);
+                #endif
+
                 var partnersJsonInfo = await httpClient.GetStringAsync(ServiceAddresses.GetPartnersInformationUrl);
+                _partnersInfo = partnersJsonInfo;
                 var partnersJsonArray = JArray.Parse(partnersJsonInfo);
                 foreach (var partner in partnersJsonArray)
                 {
@@ -31,6 +39,19 @@ namespace WindowsPhoneClient.ServiceConsumer
                 }
             }
             return partnersInformation;
+        }
+
+        public int GetTimerDuration()
+        {
+            var partnersJsonArray = JArray.Parse(_partnersInfo);
+            foreach (var partner in partnersJsonArray)
+            {
+                if ((string)partner["model"] == "mobile_api.applicationparameters")
+                {
+                    return (int)partner["fields"]["value"];
+                }
+            }
+            return 0;
         }
 
         private async Task<Partner> CreatePartnerFromJsonString(JToken item)
@@ -45,8 +66,9 @@ namespace WindowsPhoneClient.ServiceConsumer
             partner.BranchKey = (int)item["fields"]["branch_key"];
             partner.VideoUrl = (string)item["fields"]["video"];
             partner.LogoRelativePath = (string)item["fields"]["logo"];
-            partner.Logo = await DownloadLogoImage(ServiceAddresses.DomainMediaUrl + "/" + partner.LogoRelativePath);
-            partner.MarkerImage = (string)item["fields"]["marker_image"];
+            partner.Logo = await DownloadImage(ServiceAddresses.DomainMediaUrl + "/" + partner.LogoRelativePath);
+            partner.MarkerImageRelativePath = (string)item["fields"]["marker_image"];
+            partner.MarkerImage = await DownloadImage(ServiceAddresses.DomainMediaUrl + "/" + partner.MarkerImageRelativePath);
             var thumbnails = new[]
                 {
                     (string)item["fields"]["thumbnail_first"],
@@ -64,10 +86,13 @@ namespace WindowsPhoneClient.ServiceConsumer
             return partner;
         }
 
-        private async Task<byte[]> DownloadLogoImage(string imageUrl)
+        private async Task<byte[]> DownloadImage(string imageUrl)
         {
             using (var httpClient = new HttpClient())
             {
+                #if DEBUG
+                ServiceUtils.AddAuthenticationHeader(httpClient);
+                #endif
                 return await httpClient.GetByteArrayAsync(imageUrl);
             }
         }

@@ -1,8 +1,21 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converters="clr-namespace:WindowsPhoneClient.UI.Converters">
+    xmlns:converters="clr-namespace:WindowsPhoneClient.UI.Converters"
+    xmlns:mapsToolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit">
     
     <converters:SliderValueToPercentConverter x:Key="SliderValueToPercentConverter"/>
     <converters:GeoCoordinateToCoordinateModelConverter x:Key="CoordinateConverter" />
+    <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+    
+    <ControlTemplate x:Key="MapItemPushpinTemplate">
+        <StackPanel Orientation="Vertical">
+            <TextBlock FontSize="16"
+                       Text="{Binding Marker.Text}"
+                       Visibility="Collapsed"/>
+            <Image Source="{Binding Marker.MarkerImage, Converter={StaticResource ByteArrayToImageConverter}}" 
+                   Width="75"
+                   Height="75"/>
+        </StackPanel>
+    </ControlTemplate>
 </ResourceDictionary>

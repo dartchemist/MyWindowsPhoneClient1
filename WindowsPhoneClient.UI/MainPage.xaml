@@ -14,10 +14,10 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.IsVisible="False"
     Loaded="HomePageLoaded"
     x:Name="HomePage">
-
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -26,8 +26,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--<userControls:SplashScreen IsVisible="{Binding IsSplashScreenVisible}"
-                                   Message="{Binding LocalizedResources.HomePagePartnersLoadingMessage, Source={StaticResource LocalizedStrings}}"/>-->
+        <userControls:SplashScreen IsVisible="{Binding IsSplashScreenVisible, Mode=TwoWay}"
+                                   Message="{Binding LocalizedResources.HomePagePartnersLoadingMessage, Source={StaticResource LocalizedStrings}}"
+                                   Grid.RowSpan="4"/>
+        
+        <!--<userControls:SinilinkMenu Grid.Row="0"
+                                   x:Name="sinilinkMenu"/>-->
 
         <userControls:SinilinkHeader Grid.Row="0"/>
         

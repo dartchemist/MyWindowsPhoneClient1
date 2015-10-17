@@ -157,4 +157,25 @@
   <data name="HomePagePartnersLoadingMessage" xml:space="preserve">
     <value>Зарежда се информация за партньорите</value>
   </data>
+  <data name="SinilinkMenuCancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="SinilinkMenuFeedbackAndContacts" xml:space="preserve">
+    <value>Мнения и контакти</value>
+  </data>
+  <data name="SinilinkMenuRate" xml:space="preserve">
+    <value>Оценете ни</value>
+  </data>
+  <data name="SinilinkMenuShowTutotial" xml:space="preserve">
+    <value>Покажи образец за този екран</value>
+  </data>
+  <data name="SinilinkMenuTerms" xml:space="preserve">
+    <value>Условия за ползване</value>
+  </data>
+  <data name="SinilinkDialogCancelButtonText" xml:space="preserve">
+    <value>Отказ</value>
+  </data>
+  <data name="SinilinkDialogOkButtonText" xml:space="preserve">
+    <value>Добре</value>
+  </data>
 </root>

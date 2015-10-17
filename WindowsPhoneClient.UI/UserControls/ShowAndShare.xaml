@@ -15,14 +15,6 @@
     x:Name="ShowAndShareControl"
     Loaded="ShowAndShareLoaded">
     
-    <UserControl.Resources>
-        <Ellipse x:Key="CurrentPositionIndicator"
-                 Fill="Blue"
-                 Stroke="Blue"
-                 Height="25"
-                 Width="25"/>
-    </UserControl.Resources>
-    
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -39,66 +31,27 @@
                     Margin="0, 0, 20, 0"
                     Foreground="{StaticResource SinilinkBlue}"
                     IsEnabled="{Binding CanUpdateMapContent}"/>
+            
         </Grid>
         
         <maps:Map Grid.Row="1" 
                   x:Name="Map"
-                  ZoomLevel="17">
+                  ZoomLevel="15"
+                  Center="{Binding ElementName=ShowAndShareControl, Path=MapPosition, Mode=TwoWay}">
             <mapsToolkit:MapExtensions.Children>
-                <mapsToolkit:UserLocationMarker GeoCoordinate="{Binding CurrentLocation, Converter={StaticResource CoordinateConverter}}"/>
+                <mapsToolkit:UserLocationMarker GeoCoordinate="{Binding CurrentUserLocation, Converter={StaticResource CoordinateConverter}}"/>
                 <mapsToolkit:MapItemsControl>
                     <mapsToolkit:MapItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <mapsToolkit:Pushpin GeoCoordinate="{Binding Coordinate, Converter={StaticResource CoordinateConverter}}">
-                                <mapsToolkit:Pushpin.Template>
-                                    <ControlTemplate>
-                                        <StackPanel Orientation="Vertical">
-                                            <TextBlock FontSize="16"
-                                                       Text="{Binding Marker.Text}"/>
-                                            <Image Source="{Binding Marker.MarkerImage, Converter={StaticResource ByteArrayToImageConverter}}" />
-                                        </StackPanel>
-                                    </ControlTemplate>
-                                </mapsToolkit:Pushpin.Template>
-                            </mapsToolkit:Pushpin>
+                            <mapsToolkit:Pushpin GeoCoordinate="{Binding Coordinate, Converter={StaticResource CoordinateConverter}}"
+                                                 Template="{StaticResource MapItemPushpinTemplate}" />
                         </DataTemplate>
                     </mapsToolkit:MapItemsControl.ItemTemplate>
                 </mapsToolkit:MapItemsControl>
             </mapsToolkit:MapExtensions.Children>
         </maps:Map>
         
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            
-            <TextBlock Grid.Row="0"
-                       Text="{Binding LocalizedResources.ShowAndShareHowMuchFreeTitle, Source={StaticResource LocalizedStrings}}"
-                       HorizontalAlignment="Center"
-                       Foreground="Black"/>
-            <Slider Grid.Row="1"
-                    Minimum="0"
-                    Maximum="100"
-                    x:Name="AvailabilityPercentage"
-                    Width="300"
-                    Height="100"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"/>
-            <Button Grid.Row="1"
-                    Style="{StaticResource SinilinkButtonStyle}" 
-                    Content="{Binding LocalizedResources.ShowAndShareShareButtonText, Source={StaticResource LocalizedStrings}}"
-                    HorizontalAlignment="Right"
-                    Margin="0, 0, 75, 33.5"
-                    VerticalAlignment="Center"
-                    Foreground="{StaticResource SinilinkBlue}"
-                    FontSize="22"/>
-            <TextBlock Grid.Row="1"
-                       HorizontalAlignment="Right"
-                       Text="{Binding ElementName=AvailabilityPercentage, Path=Value, Converter={StaticResource SliderValueToPercentConverter}}"
-                       Margin="0, 0, 20, 30"
-                       VerticalAlignment="Center"
-                       FontSize="22"/>
-        </Grid>
+        <userControls:SharePanel Grid.Row="2" 
+                                 Visibility="{Binding CanUpdateMapContent, Converter={StaticResource InverseBoolConverter}}"/>
     </Grid>
 </UserControl>

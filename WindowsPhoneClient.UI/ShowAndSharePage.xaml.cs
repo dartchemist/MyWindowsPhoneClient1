@@ -20,5 +20,12 @@ namespace WindowsPhoneClient.UI
             InitializeComponent();
             DataContext = Application.Current.Resources["ShowAndShareAroundMeViewModel"];
         }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            var dataContext = DataContext as ShowAndShareAroundMeViewModel;
+            dataContext.AvailableParkingSpace = 50;
+            base.OnNavigatedFrom(e);
+        }
     }
 }

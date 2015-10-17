@@ -70,6 +70,7 @@ namespace WindowsPhoneClient.UI
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             ThemeManager.ToLightTheme();
+            TiltEffect.TiltEffect.SetIsTiltEnabled(RootFrame, true);
             var pageWidth = Application.Current.Host.Content.ActualWidth;
             var pageHeight = Application.Current.Host.Content.ActualHeight;
 

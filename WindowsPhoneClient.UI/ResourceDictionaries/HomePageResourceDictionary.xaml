@@ -68,7 +68,8 @@
                         VerticalAlignment="Center"
                         FontSize="20"
                         Foreground="{StaticResource SinilinkBlue}" 
-                        Style="{StaticResource SinilinkButtonStyle}"/>
+                        Style="{StaticResource SinilinkButtonStyle}"
+                        Command="{Binding ElementName=HomePage, Path=DataContext.ShowPartnerInformationCommand}"/>
             </Grid>
         </Border>
     </DataTemplate>

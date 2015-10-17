@@ -8,9 +8,9 @@ using System.Windows;
 
 namespace WindowsPhoneClient.UI.Services.ViewServices
 {
-    public class MessageService : IMessageService
+    public class DefaultMessageService : IMessageService
     {
-        public bool ShowMessage(string message, string caption)
+        public bool ShowMessage(string message, string caption, bool confirmation)
         {
             var dialogResult = MessageBox.Show(message, caption, MessageBoxButton.OK);
             if (dialogResult == MessageBoxResult.OK || dialogResult == MessageBoxResult.Yes)

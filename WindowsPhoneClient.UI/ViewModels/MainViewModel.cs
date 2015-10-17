@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using AutoMapper;
+using WindowsPhoneClient.CommonConstants;
 using WindowsPhoneClient.ServiceConsumer;
 using WindowsPhoneClient.ServiceConsumer.BusinessModels;
 using WindowsPhoneClient.UI.Infrastrucure;
@@ -22,7 +23,6 @@ namespace WindowsPhoneClient.UI.ViewModels
     {
         private readonly IGetPartnersInformationService _getPartnersInformationService;
         private readonly IMessageService                _messageService;
-        private readonly INavigationService             _navigationService;
 
         private readonly ObservableCollection<PartnerModel> _partnersInformation = new ObservableCollection<PartnerModel>();
 
@@ -33,15 +33,42 @@ namespace WindowsPhoneClient.UI.ViewModels
             set { SetField<bool>(ref _isSplashScreenVisible, value); }
         }
         
-        private readonly ICommand _showSinilinkMenuCommand = new DelegateCommand((parameter) =>
-            {
-                
-            }, null);
+        private ICommand _showSinilinkMenuCommand;
         public ICommand ShowSinilinkMenuCommand
         {
-            get { return _showSinilinkMenuCommand; }
+            get
+            {
+                if (_showSinilinkMenuCommand == null)
+                {
+                    _showSinilinkMenuCommand = new DelegateCommand(ShowSinilinkMenu);
+                }
+                return _showSinilinkMenuCommand;
+            }
         }
 
+        private void ShowSinilinkMenu(object parameter)
+        {
+            _messageService.ShowMessage("Hello from Sinilink", "Sinilink Message");
+        }
+
+        private ICommand _showPartnerInformationCommand;
+        public ICommand ShowPartnerInformationCommand
+        {
+            get
+            {
+                if (_showPartnerInformationCommand == null)
+                {
+                    _showPartnerInformationCommand = new DelegateCommand(ShowPartnerInformation, null);
+                }
+                return _showPartnerInformationCommand;
+            }
+        }
+
+        private void ShowPartnerInformation(object parameter)
+        {
+            NavigationService.Navigate("/PartnerInformationPage.xaml");
+        }
+        
         private ICommand _showAroundMeCommand;
         public ICommand ShowAroundMeCommand
         {
@@ -57,7 +84,7 @@ namespace WindowsPhoneClient.UI.ViewModels
 
         private void ShowAroundMe(object parameter)
         {
-            _navigationService.Navigate("/ShowAndSharePage.xaml");
+            NavigationService.Navigate("/ShowAndSharePage.xaml");
         }
     
         public ObservableCollection<PartnerModel> PartnersInformation
@@ -66,11 +93,10 @@ namespace WindowsPhoneClient.UI.ViewModels
         }
 
         public MainViewModel(IStorageService storageService, IGetPartnersInformationService getPartnersInformationService, IMessageService messageService, INavigationService navigationService)
-            :base(storageService)
+            :base(navigationService, storageService)
         {
             _getPartnersInformationService = getPartnersInformationService;
             _messageService = messageService;
-            _navigationService = navigationService;
         }
 
         public async void LoadPartnersInformation()
@@ -79,22 +105,23 @@ namespace WindowsPhoneClient.UI.ViewModels
             {
                 return;
             }
-            
-            IEnumerable<Partner> partnersInformation = null;
+
             try
             {
                 IsSplashScreenVisible = true;
-                partnersInformation = await _getPartnersInformationService.GetPartnersInformation();
+                var partnersInformation = await _getPartnersInformationService.GetPartnersInformation();
+                var updateTimerValue = _getPartnersInformationService.GetTimerDuration();
+                StorageService.AddItem(ApplicationCommonConstants.UpdateTimerDurationStorageKey, updateTimerValue);
                 foreach (var partner in partnersInformation)
                 {
                     _partnersInformation.Add(Mapper.Map<Partner, PartnerModel>(partner));
                 }
+                StorageService.AddItem(ApplicationCommonConstants.PartnersInformationStorageKey, _partnersInformation);
             }
             catch (Exception)
             {
-                //TODO Implement Retry strategy
+                //TODO: Implement Retry strategy
                 _messageService.ShowMessage(AppResources.CannotLoadPartnersInformation, AppResources.ErrorTitle);
-                return;
             }
             finally
             {

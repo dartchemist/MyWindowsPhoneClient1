@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="WindowsPhoneClient.UI.UserControls.SinilinkMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480"
+    x:Name="SinilinkMenuControl">
+    
+    <Popup IsOpen="{Binding ElementName=SinilinkMenuControl, Path=IsOpen, Mode=TwoWay}">
+        <Grid Background="#80FFFFFF"
+              Width="{Binding ElementName=SinilinkMenuControl, Path=Width}"
+              Height="{Binding ElementName=SinilinkMenuControl, Path=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0"
+                Style="{StaticResource SinilinkButtonStyle}"
+                Content="{Binding LocalizedResources.SinilinkMenuShowTutotial, Source={StaticResource LocalizedStrings}}"
+                HorizontalAlignment="Center"/>
+            <Button Grid.Row="1"
+                Style="{StaticResource SinilinkButtonStyle}"
+                Content="{Binding LocalizedResources.SinilinkMenuFeedbackAndContacts, Source={StaticResource LocalizedStrings}}"
+                HorizontalAlignment="Center"/>
+            <Button Grid.Row="2"
+                Style="{StaticResource SinilinkButtonStyle}"
+                Content="{Binding LocalizedResources.SinilinkMenuRate, Source={StaticResource LocalizedStrings}}"
+                HorizontalAlignment="Center"/>
+            <Button Grid.Row="3"
+                Style="{StaticResource SinilinkButtonStyle}"
+                Content="{Binding LocalizedResources.SinilinkMenuTerms, Source={StaticResource LocalizedStrings}}"
+                HorizontalAlignment="Center"/>
+            <Button Grid.Row="5"
+                Style="{StaticResource SinilinkButtonStyle}"
+                Content="{Binding LocalizedResources.SinilinkMenuCancel, Source={StaticResource LocalizedStrings}}"
+                HorizontalAlignment="Center"/>
+        </Grid>
+    </Popup>
+   
+</UserControl>

@@ -8,6 +8,6 @@ namespace WindowsPhoneClient.UI.Services.ViewServices
 {
     public interface IMessageService
     {
-        bool ShowMessage(string message, string caption);
+        bool ShowMessage(string message, string caption, bool confirmation = true);
     }
 }
